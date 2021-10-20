@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+
+    
+
+    
+
+    <title>two pass linker | 程序代写</title>
+    <meta name="author" content="frank">
+    <meta name="version" content="1.0.0">
+    <meta name="keywords" content="代写，学生代写，assignment代写，留学生代写">
+    <meta name="description" content="代写完成–链接器 two pass linkerThe target machine is word addressable and has a memory of 200 words, each consisting of 4 decimal digits. The first (leftmost) digit is the opcode, which is unchanged by the linker. The remaining three digits (called th...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><main class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">程序代写</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">案例</span>
+            </a>
+        
+            <a class="nav-item" href="/tags">
+                <span class="nav-text">标签</span>
+            </a>
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">历史</span>
+            </a>
+        
+            <a class="nav-item" href="/about">
+                <span class="nav-text">关于</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="https://chengxudaixie.github.io"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Other-requirements"><span class="toc-number">1.</span> <span class="toc-text">Other requirements</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            two pass linker
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://chengxudaixie.github.io/two-pass-linker.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2019-09-18T07:39:00.000Z" itemprop="datePublished">2019-09-18</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/JAVA/">JAVA</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <hr>
+<p>代写完成–链接器 two pass linker</p>
+<hr>
+<p>The target machine is word addressable and has a memory of 200 words, each consisting of 4 decimal digits. The first (leftmost) digit is the opcode, which is unchanged by the linker. The remaining three digits (called the address field) form either:</p>
+<ul>
+<li>an absolute address, which is unchanged. </li>
+<li>an immediate operand, which is unchanged. </li>
+<li>a relative address, which is relocated. </li>
+<li>an external address, which is resolved.<br>Relocating relative addresses and resolving external references were discussed in class and are in the notes.</li>
+</ul>
+<a id="more"></a>
+
+<p>The input consists of a series of object modules, each of which contains three parts: definition list, use list, and program text. Preceding all the object modules is a single integer giving the number of modules present.</p>
+<p>The linker processes the input twice (that is why it is called two-pass). Pass one determines the base address for each module and the absolute address for each external symbol, storing the later in the symbol table it produces. The first module has base address zero; the base address for module I + 1 is equal to the base address of module I plus the length of module I. The absolute address for a symbol S defined in module M is the base address of M plus the relative address of S within M. Pass two uses the base addresses and the symbol table computed in pass one to generate the actual output by relocating relative addresses and resolving external references.<br>The definition list is a count ND (Number of Definitions) followed by ND pairs (S, R) where S is the symbol being defined and R is the relative address to which the symbol refers. Pass one relocates R forming the absolute address A and stores the pair (S, A) in the symbol table.</p>
+<p>The use list is a count NU (Number of Uses) followed by NU pairs (S, R), where S is an external symbol used in the module and R is a relative address where S is used. The (dummy) address initially in R is a pointer to the next use of S. This linked list of uses ends with a pointer of 777.</p>
+<p>The program text consists of a count NT (Number of Text entries) followed by NT pairs (type, word), where word is a 4-digit instruction as described above and the type of the address component: 1=immediate, 2=absolute, 3=relative, and 4=external. NT is also the length of the module.</p>
+<h5 id="Other-requirements"><a href="#Other-requirements" class="headerlink" title="Other requirements"></a>Other requirements</h5><p>Your program must check the input for the errors listed below. All error messages produced must be informative, e.g., “Error: X21 was used but not defined. It has been given the value 111”.<br>1) if a symbol is defined but not used, print a warning message and continue.<br>2) if a symbol is multiply defined, print an error message and use the value given in the first definition.<br>3) if a symbol is used but not defined, print an error message and use the value zero.<br>4) if an address appearing in a definition exceeds the size of the module, print an error message and treat the address as 0 (relative).<br>5) if an immediate address (i.e., type 1) appears on a use list, print an error message and treat the address<br>as external (i.e., type 4).<br>6) if an external address is not on a use list, print an error message and treat it as an immediate address.<br>7) if an absolute address exceeds the size of the machine, print an error message and use the largest legal value.<br>You may need to set “arbitrary limits”, for example you may wish to limit the number of characters in a symbol to (say) 8. Any such limits should be clearly documented in the program and if the input fails to meet your limits, your program must print an error message. Naturally, any such limits must be large enough for all the inputs on the web. Under no circumstances should your program reference an array out of bounds, etc. </p>
+<p>Your program must read an input set from standard input, i.e., directly from the keyboard. It is an error for you to require the input be in a file.</p>
+<p><img src="/images/2019-09-23-13-24-35-089.png" alt></p>
+
+        
+    </section>
+</article>
+
+
+</div>
+        <footer class="footer">
+    <!-- Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a> -->
+    <div class="footer-inner">
+        <div class="copyright">© 2016 - 2019&nbsp;&nbsp;AssignmentDo</div>
+    </div>
+</footer>
+    </main>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+            
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle();
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp();
+            }, 3000);
+        }
+    });
+    </script>
+    
+        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+        </script>
+    
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

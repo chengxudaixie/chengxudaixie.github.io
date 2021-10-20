@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+
+    
+
+    
+
+    <title>JS canvas | 程序代写</title>
+    <meta name="author" content="frank">
+    <meta name="version" content="1.0.0">
+    <meta name="keywords" content="代写，学生代写，assignment代写，留学生代写">
+    <meta name="description" content="代写完成–JS: canvas小游戏JS棋类游戏，绘制棋盘棋子，棋子可移动，人机可以对战。游戏包含三个阶段： setup， play和end阶段play阶段游戏是循环进行的，游戏在一个6*6的格上进行。用户控制红块，程序控制黑块，以及在格子上不能移动的块。最多12个红块和12个黑块，每个块上有1-6的数字，其中最多有三个红块标有数字1, 标有2,3,4,5的红块最多各有两个，标有数字6的红块最多有一个，黑块同样如此。setup游戏从setup阶段开始，并且setup阶段包含三...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><main class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">程序代写</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">案例</span>
+            </a>
+        
+            <a class="nav-item" href="/tags">
+                <span class="nav-text">标签</span>
+            </a>
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">历史</span>
+            </a>
+        
+            <a class="nav-item" href="/about">
+                <span class="nav-text">关于</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="https://chengxudaixie.github.io"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#setup"><span class="toc-number">1.</span> <span class="toc-text">setup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#play"><span class="toc-number">2.</span> <span class="toc-text">play</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#end"><span class="toc-number">3.</span> <span class="toc-text">end</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            JS canvas
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://chengxudaixie.github.io/js-canvas.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-12-06T07:39:00.000Z" itemprop="datePublished">2017-12-06</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/JS/">JS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <hr>
+<p>代写完成–JS: canvas小游戏</p>
+<hr>
+<p>JS棋类游戏，绘制棋盘棋子，棋子可移动，人机可以对战。</p>
+<a id="more"></a>
+<p>游戏包含三个阶段： setup， play和end阶段</p>
+<p>play阶段游戏是循环进行的，游戏在一个6*6的格上进行。用户控制红块，程序控制黑块，<br>以及在格子上不能移动的块。最多12个红块和12个黑块，每个块上有1-6的数字，其中最多有三个<br>红块标有数字1, 标有2,3,4,5的红块最多各有两个，标有数字6的红块最多有一个，黑块同样如此。</p>
+<h4 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h4><p>游戏从setup阶段开始，并且setup阶段包含三个回合。在这个阶段，给定一个grid和一个按钮，<br>顺序操作，点击按钮可以进入下一个回合。在setup阶段，用户把红块黑块和不能移动的块放置在grid上<br>每个格最多只能放置一个块，并且每个格上如果放了块就不能再改变。</p>
+<p>setup阶段的第一个回合，用户通过点击一个小格并按字母b放置任意数量的不可移动的块到grid上：<br>假如用户按的字母不是b，提示错误并且没有东西会被放置在格上<br>假如用户尝试改变已经存在的一个块，提示错误并不做任何改变</p>
+<p>setup阶段的第二个回合，用户放置最多12个红块到grid上。用户通过点一个格并按字母1-6来完成一次<br>放置操作：<br>假如用户输入不是1-6，提示错误，忽略操作<br>假如用户尝试放置比数字出现次数限制更多的红块，提示错误，忽略操作<br>假如用户尝试放置多于12个红块，提示错误，忽略操作<br>假如用户尝试不放置任何红块就进入下一个回合，提示错误，并忽略操作<br>假如用户尝试改变已经存在的一个块，提示错误并不做任何改变</p>
+<p>setup阶段的第三个回合，和第二个回合一致，改红块为黑块。<br>用户点击按钮进入下一个回合，这里需要保证grid上至少存在一个黑块和一个红块。</p>
+<h4 id="play"><a href="#play" class="headerlink" title="play"></a>play</h4><p>play阶段，用户进入play阶段后，界面应该向用户展示如下信息：<br>格上的所有信息，状态信息（当前处于多少回合，红块的残余数，黑块的残余数），结束按钮</p>
+<p>在play阶段，游戏也按回合进行，每个回合按用户操纵和电脑操作交互进行。每个回合开始的时候<br>回合数加一，并且状态信息更新</p>
+<p>在每一个回合中，用户或者电脑尝试移动一个他们的块，可能存在用户或者电脑不存在任何可移动块<br>的情况，这应该在每次用户或者电脑的操作之前被判断，并且如果这种情况发生，游戏应该进入end阶段</p>
+<p>用户操作的环节，用户点击一个块并且按方向键asdw控制网格上下左右移动一个格。<br>如果是用户按的是其他键，提示错误。<br>假如用户的移动操作会导致选择的块被移出边界，或者移动到一个不可移动的块占据的位置，或者<br>一个已经被红块占领了的位置，提示错误，用户可以重新选择移动操作。否则的话，这次移动是成功的，<br>如果目的格本身就是空的，直接移动，用户操作环节结束<br>如果目的格有一个黑块，并且红块的数字比目的格黑块的数字大（构成环，也就是说1 &gt; 6），<br>那么黑块消除，否则红块消除，状态信息更新</p>
+<p>用户操作环节结束后进入电脑操作环节，</p>
+<p>电脑操作环节与用户操作环节的规则一致，电脑选择一个可以移动的黑块并进行移动。<br>电脑移动之后，当前回合结束</p>
+<p>play阶段一直继续，直到达到以下某个结束条件：<br>用户点击结束按钮主动结束游戏<br>grid上没有可以移动的红块（包含没有红块的情况）<br>grid上没有可以移动的黑块（包含没有黑块的情况）</p>
+<h4 id="end"><a href="#end" class="headerlink" title="end"></a>end</h4><p>play阶段结束之后，游戏进入end阶段，end阶段判胜负，如果grid上没有黑块用户胜，<br>没有红块电脑胜，否则平局，蹦出提示信息，并且结束游戏，不再接收用户输入</p>
+<p><img src="/images/2019-05-31-23-57-14-358.png" alt></p>
+
+        
+    </section>
+</article>
+
+
+</div>
+        <footer class="footer">
+    <!-- Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a> -->
+    <div class="footer-inner">
+        <div class="copyright">© 2016 - 2019&nbsp;&nbsp;AssignmentDo</div>
+    </div>
+</footer>
+    </main>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+            
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle();
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp();
+            }, 3000);
+        }
+    });
+    </script>
+    
+        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+        </script>
+    
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

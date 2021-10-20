@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+
+    
+
+    
+
+    <title>quiz menu system | 程序代写</title>
+    <meta name="author" content="frank">
+    <meta name="version" content="1.0.0">
+    <meta name="keywords" content="代写，学生代写，assignment代写，留学生代写">
+    <meta name="description" content="代写完成–Java命令行菜单程序：考试系统BackgroundAs described in the handout for Part 1, the overall aim of the assignment is to develop a menu-driven program to administer a quiz test.In Part 1, you have implemented the classes to represent the quiz questions ...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><main class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">程序代写</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">案例</span>
+            </a>
+        
+            <a class="nav-item" href="/tags">
+                <span class="nav-text">标签</span>
+            </a>
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">历史</span>
+            </a>
+        
+            <a class="nav-item" href="/about">
+                <span class="nav-text">关于</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="https://chengxudaixie.github.io"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Background"><span class="toc-number">1.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Task-1"><span class="toc-number">2.</span> <span class="toc-text">Task 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Task-2"><span class="toc-number">3.</span> <span class="toc-text">Task 2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Task-3"><span class="toc-number">4.</span> <span class="toc-text">Task 3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Task-4"><span class="toc-number">5.</span> <span class="toc-text">Task 4</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            quiz menu system
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://chengxudaixie.github.io/quiz-menu-system.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-04-05T07:39:00.000Z" itemprop="datePublished">2017-04-05</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Command-line/">Command line</a>, <a class="article-tag-link" href="/tags/JAVA/">JAVA</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <hr>
+<p>代写完成–Java命令行菜单程序：考试系统</p>
+<hr>
+<h4 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h4><p>As described in the handout for Part 1, the overall aim of the assignment is to develop a menu-driven program to administer a quiz test.</p>
+<p>In Part 1, you have implemented the classes to represent the quiz questions and answers. You have also written programs to test these classes. In particular, you have written a program to read a number of questions from a text ﬁle, administer the questions, obtain the answers, and print out the answers.</p>
+<a id="more"></a>
+<p>Building on the work that you have done for Part 1, in this Part 2, you are required to do the tasks described below.</p>
+<p>Besides the information given in the tasks below, please refer to Part 1 of the Assignment for any other information you may need.</p>
+<h4 id="Task-1"><a href="#Task-1" class="headerlink" title="Task 1"></a>Task 1</h4><p>Modify the classes QuizQuestion and QuizAnswer and their subclasses to use ArrayList instead of array whenever you need to maintain a collection.</p>
+<p>Test your classes with the provided BasicTester program.</p>
+<h4 id="Task-2"><a href="#Task-2" class="headerlink" title="Task 2"></a>Task 2</h4><p>(For Tasks 2, 3 and 4, you must also use ArrayList whenever you need to maintain collections.)<br>This task does not required you to do any exception handling. (That will done in Tasks 3 and 4).<br>Write a menu program called QuizMenu. The program displays the menu with the options shown below:</p>
+<pre class=" language-shell"><code class="language-shell">======== 
+Options:
+======== 
+R: Read question details from a text file 
+A: Administer the quiz test 
+F: Administer the quiz test with option to quit 
+D: Display the answers on the screen 
+W: Write the answers to a text file 
+Q: Quit
+
+Please select an option:</code></pre>
+<p>Other than the minimum required for the program to compile, no exception handling is required for this task.</p>
+<p><em>Option R</em>. The program asks for the name of the text ﬁle (e.g. qq.txt) and reads the questions from this ﬁle. The ﬁle name (to be entered) includes the ﬁle extension. The ﬁle format is exactly as described in Part 1.</p>
+<p><em>Option A</em>. The way the program administers the quiz questions and obtains the answers is exactly as described in Part 1.</p>
+<p><em>Option F</em>. (‘F’ stands for ‘Flexible administration of the quiz test’). With this option, after answering a quiz question, the user will be asked if he/she wants to continue or not. If the user chooses to quit early, options D and W are still available to display and save the results of the questions have been answered. The behavior of the program is illustrated with a sample run below:  </p>
+<pre class=" language-shell"><code class="language-shell">======== 
+Options:
+======== 
+R: Read question details from a text file 
+A: Administer the quiz test 
+F: Administer the quiz test with option to quit 
+D: Display the answers on the screen W: Write the answers to a text file 
+Q: Quit
+
+Please select an option: f
+
+Question 1 
+A try statement must have a catch block. True or false?
+Type true or false in lower case: true 
+
+Do you want to continue? (y/n): y
+Question 2 
+FileNotFoundException is a/an _____ exception. Fill in the blank Type in your answer: checked Do you want to continue? (y/n): n
+
+======== 
+Options:
+======== 
+R: Read question details from a text file 
+A: Administer the quiz test 
+F: Administer the quiz test with option to quit 
+D: Display the answers on the screen W: Write the answers to a text file 
+Q: Quit
+
+Please select an option:</code></pre>
+<p><em>Option D</em>. The way the program displays the answer is illustrated by the example below:</p>
+<pre class=" language-shell"><code class="language-shell">Question 1
+TrueFalseAnswer[quizQuestion: TrueFalseQuestion[question: A try statement must have a catch block., correctAnswer: false] , userAnswer: true, result: I]
+
+Question 2 
+WordAnswer[quizQuestion: WordQuestion[question: FileNotFoundException is a/an _____ exception. Fill in the blank., correctAnswer: checked, caseSensitive: false] , userAnswer: checked, result: C]
+
+Number of questions: 5 Number of answers: 2 
+Number of correct answers: 1
+Number of incorrect answers: 1</code></pre>
+<p>As illustrated above, the display of the result of a quiz test ends with four lines of summary.</p>
+<p><em>Option W</em>. The program asks for the name of the ﬁle to save the result to (e.g. result.txt). The information to be written and the format are exactly as for displaying the result on the screen.</p>
+<p>Hints:</p>
+<ul>
+<li><p>For each menu option (except “quit”), you should have a method to carry out the required operation.</p>
+</li>
+<li><p>Test your program with both qq.txt and qqe.txt (which has a format error).</p>
+</li>
+</ul>
+<h4 id="Task-3"><a href="#Task-3" class="headerlink" title="Task 3"></a>Task 3</h4><p>The menu-driven program of Task 2 can crash. For Task 3, you are required to enhance the program of Task 2 to prevent it from crashing.</p>
+<p>More speciﬁcally, we want to achieve the following objective:</p>
+<p>When the program carries out the operation required for a menu option, if some exceptional condition arises, the program will display a message to inform the user of the occurrence of the exception, terminate the operation and return to the main menu.</p>
+<p>In this way, the program does not crash, and all the work up to that point (before the failed operation) is preserved and further operations can be taken.</p>
+<p>Make a copy of the previous menu program and call it QuizMenuRobust.java. Modify it to make it robust as described above.</p>
+<h4 id="Task-4"><a href="#Task-4" class="headerlink" title="Task 4"></a>Task 4</h4><p>We now seek to enhance the program of Task 3 to remove some of its shortcomings.</p>
+<p>Examples of shortcomings of program QuizMenuRobust</p>
+<p>It does not make sense to administer a quiz when it has not been read. So ideally, if the user tries to administer a quiz before it is read, the program should display an error message, and terminate the operation and return to the main menu.</p>
+<p>This is not the behavior of program of Task 3. How it behaves depend on whether the list of question instances has been initialized to an empty list or not.</p>
+<ul>
+<li><p>If the list of answer objects has not been initialized, i.e. it is a null object, a message about null pointer exception is displayed before returning to the main menu.</p>
+</li>
+<li><p>If the list has been initialized to an empty ArrayList, the program returns immediately to the main menu because an empty list of questions has been administered.</p>
+</li>
+</ul>
+<p>As another example, if you read the ﬁle qqe.txt, an exception occurs, and the program returns to the main menu. But a number of questions has been read, and the list has a number of question instances. You can see this by choosing option A next.</p>
+<p>This behavior is generally not regarded as being satisfactory. Normally, if an operation like this fails, we would like to restore things to their states prior to the failed operation. (This is what rollback operation in database is about.)</p>
+<p>The state of the menu-driven program</p>
+<p>As mentioned before, if the user tries to administer a quiz before it is read, the program should display an error message, and terminate the operation and return to the main menu.</p>
+<p>In order to make that sort of behavior possible, one solution is to regard the program as what is known as a state machine. By that, we mean we regard the program an entity that can go through a number of states and the state that it is in can aﬀect its behavior.</p>
+<p>As a solution adequate for our purpose, we can regard the program as an entity that can be in one of three states represented by the three constants declared below:</p>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> QUIZ_NOT_READ <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// A quiz has not been read or has not been read successfully.</span>
+
+<span class="token comment" spellcheck="true">// When the program is in this state, there is not available</span>
+
+<span class="token comment" spellcheck="true">// a list of quiz objects to be administered.</span>
+
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> QUIZ_AVAILABLE <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// A quiz has been read and is available but it has not been</span>
+
+<span class="token comment" spellcheck="true">// administered. When the program is in this state, there is not</span>
+
+<span class="token comment" spellcheck="true">// a list of answer objects to be displayed or saved.</span>
+
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> QUIZ_TAKEN <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// A quiz has been administered, and the answers are available</span>
+
+<span class="token comment" spellcheck="true">// for displaying or saving to file</span>
+
+<span class="token comment" spellcheck="true">// More information related to these states is given below</span></code></pre>
+<p>Then we should have a variable – let us call it <code>state</code> – to keep track of the state that the program is in.</p>
+<p>Initially, the state should be <code>QUIZ_NOT_READ</code>. When a quiz is successfully read in, the state should be <code>QUIZ_AVAILABLE</code>. When a quiz is successfully administered, completely or with early exit, the state should be <code>QUIZ_TAKEN</code>.</p>
+<p>Enhancement features</p>
+<p>Make a copy of QuizMenuRobust, change the name to QuizMenuEnhanced, and modify it to implement the enhancement features described below:</p>
+<p><em>For option R (read questions)</em></p>
+<p>E1 If the operation completes successfully, the state must be set to <code>QUIZ_AVAILABLE</code> E2 If the operation fails (and throws an exception),</p>
+<ul>
+<li><p>The list of question objects must be set to null</p>
+</li>
+<li><p>The state must be set to <code>QUIZ_NOT_READ</code></p>
+</li>
+</ul>
+<p>E3 If the user chooses option R when the state is <code>QUIZ_AVAILABLE</code> or <code>QUIZ_TAKEN</code>,</p>
+<ul>
+<li><p>Ask the user if they really want to read a new quiz, and then proceed accordingly.</p>
+</li>
+<li><p>If the user conﬁrms that they want to proceed with reading in a new quiz, then we prepare a “clean sheet” ﬁrst with the following actions</p>
+<ul>
+<li>Set the state to <code>QUIZ_NOT_READ</code></li>
+<li>Set the lists of question and answer objects to null before proceed to reading the questions.</li>
+</ul>
+</li>
+</ul>
+<p>NOTE: If the subsequent reading is completed successfully, the state must be set to <code>QUIZ_AVAILABE</code>. If the subsequent reading fails, the state must be <code>QUIZ_NOT_READ</code>. See E1 and E2 above.</p>
+<p><em>For options A and F (administer the quiz)</em></p>
+<p>E4 If the operation completes successfully, the state must be set to <code>QUIZ_TAKEN</code>. 
+E5 If the operation fails,</p>
+<ul>
+<li><p>The list of answer objects must be set to null</p>
+</li>
+<li><p>the state must be <code>QUIZ_AVAILABE</code></p>
+</li>
+</ul>
+<p>E6 If the user tries option A or F when the state is <code>QUIZ_NOT_READ</code>, display an error message, terminate the operation and return to the main menu.</p>
+<p>E7 If the user tries to administer a quiz when the state is <code>QUIZ_TAKEN</code>,</p>
+<ul>
+<li><p>Ask the user if they really want to take the test again, and then proceed accordingly.</p>
+</li>
+<li><p>If the user conﬁrms that they want to proceed with this option, then</p>
+<ul>
+<li>The list of answer instances must be set to null</li>
+<li>The state must be set to <code>QUIZ_AVAILABLE</code></li>
+</ul>
+</li>
+</ul>
+<p>NOTE: If the subsequent administering operation is completed successfully, the state must be set to <code>QUIZ_TAKEN</code>. If the operation fails, the state must be <code>QUIZ_AVAILABLE</code>. See E4 and E5.</p>
+<p><em>For options D and W (display and save answers)</em></p>
+<p>E8 If the user tries option D or W when the state is not <code>QUIZ_TAKEN</code>, display an error message, terminate the operation and return to the main menu.</p>
+
+        
+    </section>
+</article>
+
+
+</div>
+        <footer class="footer">
+    <!-- Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a> -->
+    <div class="footer-inner">
+        <div class="copyright">© 2016 - 2019&nbsp;&nbsp;AssignmentDo</div>
+    </div>
+</footer>
+    </main>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+            
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle();
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp();
+            }, 3000);
+        }
+    });
+    </script>
+    
+        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+        </script>
+    
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
